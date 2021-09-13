@@ -127,7 +127,7 @@ function getInningScore(inningcb) {
   }
 }
 
-console.log(getInningScore(inning))
+console.log(getInningScore(inning));
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -171,21 +171,44 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(inningScorecb, inningcb, inningsNum) {
-  
+// Reference from Breakout room code
+function scoreboard(inningScorecb, inningcb, numOfInnings) {
+  // first step
   const scoreByInning = [];
 
+  // Create variables will be update
   let homeScore = 0;
   let awayScore = 0;
 
-  for(let i =0; i < inningsNum; i++) {
-    
+  // for loop
+  for(let i =0; i < numOfInnings; i++) {
+
+    // invoking currentInning 
     const currentInning = inningScorecb(inningcb)
 
+    // updating variab;es 
     homeScore = homeScore +  currentInning.Home
-    awayScore
+    awayScore = awayScore + currentInning.Away
+
+    // pushing scores into array form
+    scoreByInning.push(`Inning ${i + 1}: AWAY ${awayScore} and HOME ${homeScore}`)
   }
+
+  // If scores are tied || Extra innings
+  if(homeScore === awayScore) {
+    scoreByInning.push(`This game will require extra innings: AWAY ${awayScore} and HOME ${homeScore}`);
+
+    // if a team wins a game
+  } else {
+    scoreByInning.push(`Final Score: AWAY ${awayScore} and HOME ${homeScore}`);
+
+  }
+
+  // Outside of the loop if I want the array back
+  return scoreByInning;
 }
+
+console.log(scoreboard(getInningScore, inning, 9))
 
 
 
