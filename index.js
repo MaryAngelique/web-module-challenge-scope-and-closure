@@ -70,7 +70,7 @@ function inning(){
 
   // Google says there are 9 innings in baseball with 3 outs to score as many runs
   // toFixed() will support a larger range of values -- toFixed() default: 0
-  return ((Math.random() * 10).toFixed() % 3);
+  return ((Math.random() * 3));
 }
 
 console.log(inning());
@@ -94,13 +94,19 @@ Use the finalScore function below to do the following:
 
 // Refer to Hockey game function from lecture
 
-function finalScore(inningCB, inningsNum) {
+function finalScore(inningcb, inningsNum) {
+
+  // creating variables that will be updated
   let homeScore = 0;
   let awayScore = 0;
+
+  // create a for loop to loop to if a team scores
   for (let i = 0; i < inningsNum; i++) {
-    homeScore = homeScore + inningCB();
-    awayScore = awayScore + inningCB();
+    homeScore = homeScore + inningcb();
+    awayScore = awayScore + inningcb();
   }
+
+  // Returning outside of the loop
   return {
     Home: homeScore,
     Away: awayScore
@@ -114,9 +120,14 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  return{
+    Home: inningcb(),
+    Away: inningcb()
+  }
 }
+
+console.log(getInningScore(inning))
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -160,8 +171,20 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inningScorecb, inningcb, inningsNum) {
+  
+  const scoreByInning = [];
+
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for(let i =0; i < inningsNum; i++) {
+    
+    const currentInning = inningScorecb(inningcb)
+
+    homeScore = homeScore +  currentInning.Home
+    awayScore
+  }
 }
 
 
